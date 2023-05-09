@@ -24,18 +24,19 @@
 3 => 7, 5, 3, 3, 3.0, 3.0, 2,
 2 => 7, 5, 3, 3, 3.0, 3.0, 2, 2.0,"""
 
-lst_raiting = [7, 5, 3, 3, 3, 2]
+lst_rating = [7, 5, 3, 3, 3, 2]
 while True:
     number = input("Ввeдите число")
+    #isnumeric изучить
     if number == "":
         break
-    number = int (number)
-    for idx, el in enumerate(lst_raiting):
+    number = int(number)
+    for idx, el in enumerate(lst_rating):
         if number > el:
             break
-    if int(el) >= number:  #int и float вводим для проверки отличий элементов
-        lst_raiting.append(float(number))
+    if el >= number:  #int и float вводим для проверки отличий элементов
+        lst_rating.append(float(number))
     else:
-        lst_raiting.insert(idx, float(number))
-    for el in lst_raiting:
+        lst_rating.insert(idx, float(number))
+    for el in lst_rating:
         print (el, end = ", ")

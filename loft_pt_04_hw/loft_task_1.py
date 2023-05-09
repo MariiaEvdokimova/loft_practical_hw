@@ -20,16 +20,16 @@
 <function_name>([1, 3, 1, 3, 4, 2, 5, 5, 2], "max-min")  -> [1, 3, 3, 3, 4, 2, 1, 1, 2]"""
 
 def replace(lst_data):
-    lst_rez = lst_data.copy()
+    #lst_rez = lst_data.copy()
     # вычисляем каждое значение независимо
-    min_val = min(lst_rez)
-    max_val = max(lst_rez)
+    min_val = min(lst_data)
+    max_val = max(lst_data)
     if min_val == max_val:
-        return None
-    for idx, el in enumerate(lst_rez):
+        return
+    for idx, el in enumerate(lst_data):
         if el == min_val:
-            lst_rez[idx] = max_val
-    return lst_rez
+            lst_data[idx] = max_val
+    return lst_data
 
 #test1=[1, 3, 1, 3, 4, 2, 5, 5, 2]
 #print(test1)
@@ -39,3 +39,21 @@ def replace(lst_data):
 print(replace([1, 3, 1, 3, 4, 2, 5, 5, 2]))
 print(replace([2, 3, 2, 3, 4, 2, 4, 4, 2]))
 print(replace([3, 3, 3, 3, 3, 3, 3, 3, 3]))
+
+#Усложнение #1 для Задания #4.1
+def replace_mm(lst_data, replacement_type):
+    min_val = min(lst_data)
+    max_val = max(lst_data)
+    if min_val == max_val:
+       return
+    for idx, el in enumerate(lst_data):
+        if replacement_type == "min-max":
+            if el == min_val:
+             lst_data[idx] = max_val
+        if replacement_type == "max-min":
+            if el == max_val:
+             lst_data[idx] = min_val
+    return lst_data
+
+print(replace_mm([1, 3, 1, 3, 4, 2, 5, 5, 2], "min-max"))
+print(replace_mm([1, 3, 1, 3, 4, 2, 5, 5, 2], "max-min"))

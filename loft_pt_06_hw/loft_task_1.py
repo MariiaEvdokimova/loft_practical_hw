@@ -34,7 +34,6 @@ print(main(1,-10))
 def main(begin: int, end: int) -> list:
     if begin > end:
         raise ValueError
-    rez = [num for num in range(begin, end+1) if num % 2 == 0]
     rez2 = [float(num) if num > (end - begin) / 2 else num for num in [num for num in range(begin, end+1) if num % 2 == 0]]
     return rez2
 

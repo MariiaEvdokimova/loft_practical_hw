@@ -21,14 +21,20 @@
 <function_name>(1,-10) -> ValueError"""
 
 def main(begin: int, end: int) -> list:
-    if begin > end:
-        raise ValueError
-    return [num for num in range(begin, end+1) if num % 2 == 0]
+     if begin > end:
+         raise ValueError
+     result = [num for num in range(begin, end+1) if num % 2 == 0]
+     if not result:
+          raise ValueError
+     return result
+
 
 print(main(1,10))
 print(main(1,13))
 print(main(-2,14))
+print(main(1,1)) #добавлена проверка
 print(main(1,-10))
+
 
 #Усложнение #1 для Задания #6.1
 def main(begin: int, end: int) -> list:
@@ -41,3 +47,4 @@ print(main(1,10))
 print(main(1,13))
 print(main(-2,14))
 print(main(1,-10))
+

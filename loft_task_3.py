@@ -1,7 +1,5 @@
 """- Написать скрипт, который для заданной папки выводит статистику размеров файлов.
-
 **Техническое задание:**
-
 1. Скачайте директорию с файлами: ['some_data'](https://drive.google.com/drive/folders/1lasnXad-zn6CN48Kk3aeQ-kER66e1dN-?usp=share_link).
 2. Результат формируется в виде словаря
     1. ключи — верхняя граница размера файла.
@@ -9,13 +7,30 @@
 3. Границы диапазонов размеров считаем фиксированными данными - пусть будет кратна 10, как в примере.
 4. Программа должна легко модифицироваться под другие границы диапазонов.
 5. Программа должна легко модифицироваться под увеличение количества диапазонов. Т.е. если диапазонов станет 150 штук - не надо будет переписывать всю программу.
-
 **Примеры/тесты:**
-
 Для директории-примера some_data
 
 ```python
 {100: 1, 1000: 28, 10000: 260, 100000: 2211}
 ```
-
 В примере: Тут 1 файл размером не более 100 байт; 28 файлов больше 100 и не более 1000 байт и т.п."""
+
+from pathlib import Path
+
+size_bounds = [100, 1000, 10000, 100000]
+current_path = Path(__file__).parent
+data_path = current_path / 'some_data'
+size_dict = {bound: 0 for bound in size_bounds}
+
+from os import walk
+
+for root, dirs, files in walk(data_path):
+    for file in files:
+        file_path = Path(root) / file
+        file_size = file_path.stat().st_size
+        for size in size_dict.keys():
+            if file_size <= size:
+                size_dict[size] += 1
+                break
+
+print(size_dict)

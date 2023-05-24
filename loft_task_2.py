@@ -17,8 +17,8 @@ from random import randrange
 
 current_dir = Path(__file__).parent
 data_dir = current_dir / 'data_task_01'
-with open(data_dir / 'surnames.txt', mode = 'rt', encoding = 'utf-8') as file_read:
-   with open(data_dir / 'result2.txt', mode = 'wt', encoding = 'utf-8') as file_write:
+with open(data_dir / 'surnames.txt', mode='rt', encoding='utf-8') as file_read:
+   with open(data_dir / 'result2.txt', mode='wt', encoding='utf-8') as file_write:
       for line in file_read:
          surname = line.strip()
          choices = [str(randrange(1, 99)) for _ in range(10)]
